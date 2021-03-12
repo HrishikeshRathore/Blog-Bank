@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "452260198069",
+    "project_id": "blog-bank",
+    "storage_bucket": "blog-bank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452260198069:android:a37b76bbf00e82d9f370fc",
+        "android_client_info": {
+          "package_name": "com.hrishikesh.blog_bank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452260198069-ak1tasvfo4397fve1dkqbrhr39cu4hru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeD4HzGVHcWfVUu7T1cdvmpInM7oc61cI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452260198069-ak1tasvfo4397fve1dkqbrhr39cu4hru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
