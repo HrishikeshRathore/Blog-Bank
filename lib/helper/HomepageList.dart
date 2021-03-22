@@ -1,5 +1,7 @@
 import 'package:blog_bank/services/blog_database.dart';
 import 'package:blog_bank/widgets/home_page_screen.dart';
+import 'package:blog_bank/widgets/slider_widget.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -25,14 +27,45 @@ class HomepageList extends StatelessWidget {
                 )
               : Consumer<BlogDatabase>(
                   builder: (BuildContext context, value, Widget child) {
-                    return ListView.builder(
-                      itemCount: value.list.length,
-                      itemBuilder: (ctx, i) => HomePageScreen(
-                        title: value.list[i].title,
-                        topic: value.list[i].topic,
-                        image: value.list[i].imageUrl,
-                        content: value.list[i].content,
-                      ),
+                    return Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          child: CarouselSlider.builder(
+                              itemCount: value.list.length,
+                              itemBuilder: (ctx, i, realIdx) => SliderWidget(
+                                title: value.list[i].title,
+                                topic: value.list[i].topic,
+                                image: value.list[i].imageUrl,
+                                content: value.list[i].content,
+                              ),
+                              options: CarouselOptions(
+                                height: MediaQuery.of(context).size.height * .28,
+                                enlargeCenterPage: true,
+                                autoPlay: true,
+                                aspectRatio: 16 / 9,
+                                autoPlayCurve: Curves.easeOutCirc,
+                                enableInfiniteScroll: true,
+                                autoPlayAnimationDuration: Duration(milliseconds: 1800),
+                                viewportFraction: 0.85,
+                              ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Card(
+                            elevation: 0,
+                            child: ListView.builder(
+                              itemCount: value.list.length,
+                              itemBuilder: (ctx, i) => HomePageScreen(
+                                title: value.list[i].title,
+                                topic: value.list[i].topic,
+                                image: value.list[i].imageUrl,
+                                content: value.list[i].content,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     );
                   },
                 );

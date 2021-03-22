@@ -124,7 +124,6 @@ class _CreateBlogState extends State<CreateBlog> {
                   ],
                 )
             );
-            Navigator.of(context).pop();
           },
         ),
         title: Text('Create Blog',
@@ -229,6 +228,7 @@ class _CreateBlogState extends State<CreateBlog> {
                             ),
 
                             TextFormField(
+                              textCapitalization: TextCapitalization.sentences,
                               initialValue: _initValues['title'],
                               onSaved: (value) {
                                 _editedBlog = BlogModel(
@@ -265,6 +265,7 @@ class _CreateBlogState extends State<CreateBlog> {
                             ),
 
                             TextFormField(
+                              textCapitalization: TextCapitalization.sentences,
                               initialValue: _initValues['topic'],
                               onSaved: (value) {
                                 _editedBlog = BlogModel(
@@ -302,6 +303,7 @@ class _CreateBlogState extends State<CreateBlog> {
                             ),
 
                             TextFormField(
+                              textCapitalization: TextCapitalization.sentences,
                               initialValue: _initValues['content'],
                               onSaved: (value) {
                                 _editedBlog = BlogModel(

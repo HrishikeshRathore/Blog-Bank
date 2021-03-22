@@ -66,8 +66,7 @@ class DescriptionPage extends StatelessWidget {
              width: double.infinity,
              alignment: Alignment.center,
              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20,),
-             child: Flexible(
-                child: Text(
+             child: Text(
                   args.title,
                   style: TextStyle(
                     color: Colors.green[400],
@@ -76,7 +75,6 @@ class DescriptionPage extends StatelessWidget {
                   ),
                 ),
               ),
-           ),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,18 +122,24 @@ class DescriptionPage extends StatelessWidget {
               width: double.infinity,
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                child: Text(
-                  args.content == null ? 'Not Available' : args.content ,
-                  textAlign: TextAlign.justify,
-                  style: TextStyle(
+                child: RichText(
+                  text: TextSpan(style: TextStyle(
                     color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: .8,
+                    fontSize: 16,
                   ),
-                ),
+                  children: [
+                    TextSpan(
+                      text: args.content[0],
+                      style:  TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                      ).copyWith(
+                        fontSize: 24, fontWeight: FontWeight.bold)),
+                    TextSpan(text: args.content.substring(1)),
+                ]),
               ),
             ),
+          ),
           ),
 
         ],
@@ -143,3 +147,15 @@ class DescriptionPage extends StatelessWidget {
     );
   }
 }
+
+
+// Text(
+//   args.content == null ? 'Not Available' : args.content ,
+//   textAlign: TextAlign.justify,
+//   style: TextStyle(
+//     color: Colors.black,
+//     fontSize: 15,
+//     fontWeight: FontWeight.w500,
+//     letterSpacing: .8,
+//   ),
+// ),

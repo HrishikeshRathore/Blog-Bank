@@ -32,7 +32,7 @@ class SliderWidget extends StatelessWidget {
       child: Container(
         height: 200,
         width: double.infinity,
-        margin: EdgeInsets.all(3.0),
+        margin: EdgeInsets.all(0.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
           image: DecorationImage(
@@ -55,28 +55,6 @@ class SliderWidget extends StatelessWidget {
                 )),
 
             Positioned(
-              right: 0,
-              child: Container(
-                padding: EdgeInsets.only(bottom: 15),
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Colors.black45,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(15),
-                        topRight: Radius.circular(8)
-                    )
-                ),
-                child: Center(
-                  child: IconButton(
-                    icon: Icon(Icons.favorite_border, color: Colors.white,),
-                    onPressed: () {
-
-                    },
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
               bottom: 0,
               left: 0,
               right: 0,
@@ -93,8 +71,9 @@ class SliderWidget extends StatelessWidget {
                 height: 40,
                 child: Text(title, style: TextStyle(
                     color: Colors.white,
-                    fontSize: 13,
-                    height: 1
+                    fontSize: 18,
+                    height: 1,
+                    fontWeight: FontWeight.w800,
                 ),),
               ),
             ),
