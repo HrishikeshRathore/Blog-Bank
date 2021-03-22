@@ -1,4 +1,5 @@
 import 'package:blog_bank/models/blog_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DescriptionPage extends StatelessWidget {
@@ -36,48 +37,85 @@ class DescriptionPage extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: 5,
-                  bottom: 10,
-                  child: Text(
-                    args.title == null ? '' : args.title,
-                    style: TextStyle(
-                      color: Colors.white,
-                      backgroundColor: Colors.black38,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  right: 0,
+                  bottom: 15,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black38,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        bottomLeft: Radius.circular(20),
+                      ),
                     ),
-                  ),
-                ),
-                Positioned(
-                  right: 5,
-                  top: 30,
-                  child: Text(
-                    args.topic == null ? '' :args.topic,
-                    style: TextStyle(
-                      color: Colors.white,
-                      backgroundColor: Colors.black38,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    child: Text(
+                      args.topic == null ? '' :args.topic,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
           ),
+          
+           Container(
+             width: double.infinity,
+             alignment: Alignment.center,
+             padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20,),
+             child: Flexible(
+                child: Text(
+                  args.title,
+                  style: TextStyle(
+                    color: Colors.green[400],
+                    fontWeight: FontWeight.w600,
+                    fontSize: 25,
+                  ),
+                ),
+              ),
+           ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 15,
+                    top: 5
+                ),
+                child: Text(
+                  'Published by Hrishikesh',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(
+                    right: 15,
+                    top: 5
+                ),
+                child: Text(
+                  '12/10/2020',
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
 
           Padding(
-            padding: const EdgeInsets.only(
-              left: 15,
-              top: 15
-            ),
-            child: Text(
-              'Published by Hrishikesh',
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Divider(height: 20,),
           ),
 
           Expanded(
@@ -91,8 +129,9 @@ class DescriptionPage extends StatelessWidget {
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 13,
-                    letterSpacing: 1,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: .8,
                   ),
                 ),
               ),

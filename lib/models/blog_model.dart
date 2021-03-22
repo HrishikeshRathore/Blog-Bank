@@ -5,6 +5,7 @@ class BlogModel {
   final String topic;
   final String content;
   final String imageUrl;
+  final String publisher;
 
   BlogModel({
     this.userId,
@@ -13,6 +14,7 @@ class BlogModel {
     this.topic,
     this.content,
     this.imageUrl,
+    this.publisher,
 });
 
 }

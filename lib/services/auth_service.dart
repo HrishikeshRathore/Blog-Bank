@@ -1,11 +1,14 @@
+import 'package:blog_bank/services/blog_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 
 class AuthService with ChangeNotifier {
 
   String error;
 
   FirebaseAuth auth = FirebaseAuth.instance;
+  
 
   Future<void> registerWithEmailAndPassword(String name, String email, String password) async{
     error = null;
@@ -20,6 +23,7 @@ class AuthService with ChangeNotifier {
       print(e);
     }
   }
+
 
   Future<void> signInWithEmailAndPassword(String email, String password) async{
     try {

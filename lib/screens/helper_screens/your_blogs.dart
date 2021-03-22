@@ -14,7 +14,9 @@ class YourBlogs extends StatelessWidget {
               Center(child: CircularProgressIndicator(),) :
               Consumer<BlogDatabase> (
                 builder: (BuildContext context, value, Widget child) {
-                  return ListView.builder(
+                  return value.particularUserList.isEmpty ?
+                  Center(child: Flexible(child: Text('No blog added by you Yet...')),):
+                  ListView.builder(
                     itemCount: value.particularUserList.length,
                     itemBuilder: (ctx, i) => YourBlogWidget(
                       id: value.particularUserList[i].id,

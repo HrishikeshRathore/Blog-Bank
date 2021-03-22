@@ -93,6 +93,37 @@ class _CreateBlogState extends State<CreateBlog> {
           icon: Icon(Icons.arrow_back),
           color: Colors.black,
           onPressed: () {
+            return showDialog(
+                context: context,
+                builder: (ctx) => AlertDialog(
+                  title: Text('Are you sure?'),
+                  content: Text(
+                    'The blog is not published yet.\nDo you want to close?',
+                    style: TextStyle(
+                      color: Colors.grey[800],
+                    ),
+                  ),
+                  actions: [
+                    FlatButton(onPressed: (){
+                      Navigator.of(context).pop();
+                    },
+                        child: Text('No',
+                          style: TextStyle(
+                            color: Colors.green[300],
+                            fontSize: 15,
+                          ),)),
+                    FlatButton(onPressed: (){
+                      Navigator.of(context).pop();
+                      Navigator.of(context).pop();
+                    },
+                        child: Text('Yes',
+                          style: TextStyle(
+                            color: Colors.green[300],
+                            fontSize: 15,
+                          ),)),
+                  ],
+                )
+            );
             Navigator.of(context).pop();
           },
         ),

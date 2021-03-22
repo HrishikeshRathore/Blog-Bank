@@ -1,5 +1,5 @@
-import 'file:///C:/flutter_projects/Blog-Bank/lib/screens/helper_screens/home_page.dart';
 import 'package:blog_bank/helper/HomepageList.dart';
+import 'package:blog_bank/screens/about_us_screen.dart';
 import 'package:blog_bank/screens/helper_screens/create_blog.dart';
 import 'package:blog_bank/screens/helper_screens/your_blogs.dart';
 import 'package:blog_bank/services/auth_service.dart';
@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   int _selectedIndex = 1;
+
 
   static List<Widget> _widgetOptions = <Widget>[
 
@@ -33,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
 
     String appBarIndex;
 
@@ -71,6 +73,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
             ),
 
+          if(_selectedIndex == 1)
+            IconButton(
+                color: Colors.green[300],
+                icon: Icon(Icons.info_outline),
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AboutUs.routeName);
+                }
+            ),
+
           if(_selectedIndex == 2)
             FlatButton(
                 onPressed: () {
@@ -83,17 +94,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     fontWeight: FontWeight.w600
                   ),
                 )),
-          // FlatButton.icon(
-          //   onPressed: () {
-          //     Provider.of<AuthService>(context, listen: false).signOut();
-          //   },
-          //   icon: Icon(Icons.person),
-          //   label: Text('Sign Out'),
-          // ),
-          // IconButton(icon: Icon(Icons.add), onPressed: (){
-          //   Navigator.of(context).pushNamed(AddDataScreen.routeName);
-          // }
-          // ),
         ],
       ),
       body: Center(
@@ -121,41 +121,6 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: _onItemTapped,
       ),
 
-      endDrawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-            ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
 
     );
   }

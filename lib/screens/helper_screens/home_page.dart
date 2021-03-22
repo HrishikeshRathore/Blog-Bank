@@ -52,34 +52,3 @@ class HomePage extends StatelessWidget {
   }
 }
 
-//
-// FutureBuilder(
-// future: Provider.of<DatabaseProvider>(context, listen: false).getData(),
-// builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-// return snapshot.connectionState == ConnectionState.waiting ? Center(child: CircularProgressIndicator(),) :
-// Consumer<DatabaseProvider> (
-// builder: (BuildContext context, value, Widget child) {
-// return ListView.builder(
-// itemBuilder: (ctx,i) => ListTile(
-// title: Text('${value.list[i].name} is aged ${value.list[i].age}'),
-// leading: IconButton(
-// icon: Icon(Icons.edit),
-// onPressed: () {
-// Navigator.of(context).pushNamed(AddDataScreen.routeName, arguments: value.list[i]);
-// },
-// ),
-// subtitle: Text(value.list[i].id == null ? 'abcd' : value.list[i].id),
-// trailing: IconButton(
-// icon: Icon(Icons.delete),
-// onPressed: () {
-// Provider.of<DatabaseProvider>(context, listen: false).deleteUser(value.list[i].id);
-// Provider.of<DatabaseProvider>(context, listen: false).getData();
-// },
-// ),
-// ),
-// itemCount: value.list.length,
-// );
-// },
-// );
-// },
-// );

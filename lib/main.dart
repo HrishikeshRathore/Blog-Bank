@@ -1,4 +1,5 @@
 import 'package:blog_bank/helper/HomepageList.dart';
+import 'package:blog_bank/screens/about_us_screen.dart';
 import 'package:blog_bank/screens/description_page.dart';
 import 'package:blog_bank/screens/helper_screens/create_blog.dart';
 import 'package:blog_bank/services/auth_service.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
                 CreateBlog.routeName: (ctx) => CreateBlog(),
                 DescriptionPage.routeName: (ctx) => DescriptionPage(),
                 HomepageList.routeName: (ctx) => HomepageList(),
+                AboutUs.routeName: (ctx) => AboutUs(),
             },
           ),
       );

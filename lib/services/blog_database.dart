@@ -9,6 +9,8 @@ class BlogDatabase with ChangeNotifier{
 
   List<BlogModel> particularUserList = [];
 
+  static String currentUser;
+
   CollectionReference blog = FirebaseFirestore.instance.collection('blogs');
   FirebaseAuth auth = FirebaseAuth.instance;
 

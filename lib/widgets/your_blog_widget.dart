@@ -25,23 +25,35 @@ class YourBlogWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height * .22,
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
         elevation: 4,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.network(
-              image,
-              fit: BoxFit.cover,
-              width: MediaQuery.of(context).size.width * .35,
-              height: double.infinity,
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                topLeft: Radius.circular(10),
+              ),
+              child: Image.network(
+                image,
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width * .35,
+                height: double.infinity,
+              ),
             ),
+            SizedBox(width: 10,),
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Flexible(
                     child: Text(title,
                       overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -51,9 +63,11 @@ class YourBlogWidget extends StatelessWidget {
                   SizedBox(height: 10,),
                   Flexible(
                     child: Text(topic,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.grey[800],
+                        color: Colors.green[300],
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -61,6 +75,7 @@ class YourBlogWidget extends StatelessWidget {
                 ],
               ),
             ),
+            VerticalDivider(width: 0,),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -73,7 +88,6 @@ class YourBlogWidget extends StatelessWidget {
                       Navigator.of(context).pushNamed(CreateBlog.routeName, arguments: id);
                     }
                 ),
-                VerticalDivider(),
                 IconButton(
                     icon: Icon(Icons.delete_forever_sharp,
                       color: Colors.redAccent[400],

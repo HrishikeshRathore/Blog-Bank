@@ -24,7 +24,7 @@ class HomePageScreen extends StatelessWidget {
       },
       child: Container(
         width: double.infinity,
-        height: MediaQuery.of(context).size.height * .17,
+        height: MediaQuery.of(context).size.height * .2,
         margin: EdgeInsets.all(5),
         child: Card(
           shape: RoundedRectangleBorder(
@@ -44,11 +44,11 @@ class HomePageScreen extends StatelessWidget {
                 child: Image.network(
                   image,
                   height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width * .3,
+                  width: MediaQuery.of(context).size.width * .35,
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(width: 5,),
+              SizedBox(width: 17,),
 
               Expanded(
                 child: Column(
@@ -58,9 +58,11 @@ class HomePageScreen extends StatelessWidget {
                     Flexible(
                       child: Text(
                         title,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -70,7 +72,7 @@ class HomePageScreen extends StatelessWidget {
                         topic,
                         style: TextStyle(
                           color: Colors.green[300],
-                          fontSize: 13,
+                          fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -89,10 +91,6 @@ class HomePageScreen extends StatelessWidget {
                 ),
               ),
 
-              IconButton(
-                icon: Icon(Icons.favorite, color: Colors.grey[700],),
-                onPressed: () {},
-              ),
             ],
           ),
         ),
