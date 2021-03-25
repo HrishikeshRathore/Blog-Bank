@@ -1,4 +1,5 @@
 import 'package:blog_bank/models/blog_model.dart';
+import 'package:blog_bank/screens/blog_by_user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class DescriptionPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final BlogModel args = ModalRoute.of(context).settings.arguments;
+
 
     return Scaffold(
       body: Column(
@@ -84,12 +86,21 @@ class DescriptionPage extends StatelessWidget {
                     left: 15,
                     top: 5
                 ),
-                child: Text(
-                  'Published by Hrishikesh',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
+                child: GestureDetector(
+                  onTap: () {
+                    print('hello');
+                    Navigator.of(context).pushNamed(BlogByUser.routeName, arguments: args.userId);
+                    print(args.id);
+                  },
+                  child: Container(
+                    child: Text(
+                      'Published by ${args.publisher}',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -100,7 +111,7 @@ class DescriptionPage extends StatelessWidget {
                     top: 5
                 ),
                 child: Text(
-                  '12/10/2020',
+                  args.date == null ? 'No date provided' : args.date,
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 12,
@@ -123,6 +134,7 @@ class DescriptionPage extends StatelessWidget {
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: RichText(
+                  textAlign: TextAlign.justify,
                   text: TextSpan(style: TextStyle(
                     color: Colors.black,
                     fontSize: 16,

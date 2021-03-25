@@ -4,16 +4,22 @@ import 'package:flutter/material.dart';
 
 class SliderWidget extends StatelessWidget {
 
+  final String userId;
   final String image;
   final String title;
   final String topic;
   final String content;
+  final String publisher;
+  final String date;
 
   SliderWidget({
+   this.userId,
    this.image,
    this.content,
    this.topic,
    this.title,
+   this.publisher,
+    this.date,
 });
 
   @override
@@ -22,10 +28,13 @@ class SliderWidget extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pushNamed(DescriptionPage.routeName, arguments:
           BlogModel(
+            userId: this.userId,
             title: this.title,
             imageUrl: this.image,
             content: this.content,
             topic: this.topic,
+            publisher: this.publisher,
+            date: this.date,
           )
         );
       },

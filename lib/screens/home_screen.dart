@@ -1,8 +1,10 @@
-import 'package:blog_bank/helper/HomepageList.dart';
+import 'file:///C:/flutter_projects/Blog-Bank/lib/screens/helper_screens/HomepageList.dart';
 import 'package:blog_bank/screens/about_us_screen.dart';
 import 'package:blog_bank/screens/helper_screens/create_blog.dart';
+import 'package:blog_bank/screens/helper_screens/profile.dart';
 import 'package:blog_bank/screens/helper_screens/your_blogs.dart';
 import 'package:blog_bank/services/auth_service.dart';
+import 'package:blog_bank/services/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+
   int _selectedIndex = 1;
 
 
@@ -20,9 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     YourBlogs(),
     HomepageList(),
-    Text(
-      'Index 2: School',
-    ),
+    UserProfile(),
   ];
 
   void _onItemTapped(int index) {
@@ -35,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
 
+    Provider.of<UserProfileProvider>(context, listen: false).getUserData();
 
     String appBarIndex;
 

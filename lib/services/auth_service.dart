@@ -8,21 +8,26 @@ class AuthService with ChangeNotifier {
   String error;
 
   FirebaseAuth auth = FirebaseAuth.instance;
-  
+
+  static String userName;
 
   Future<void> registerWithEmailAndPassword(String name, String email, String password) async{
     error = null;
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      userName = name;
+      var value = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: email,
           password: password,
       );
+      value.user.updateProfile(displayName: name);
+
     } on FirebaseAuthException catch (e) {
       handleError(e);
     } catch (e) {
       print(e);
     }
   }
+
 
 
   Future<void> signInWithEmailAndPassword(String email, String password) async{

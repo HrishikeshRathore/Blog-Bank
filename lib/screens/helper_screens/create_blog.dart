@@ -1,6 +1,9 @@
 import 'package:blog_bank/models/blog_model.dart';
+import 'package:blog_bank/services/auth_service.dart';
 import 'package:blog_bank/services/blog_database.dart';
+import 'package:blog_bank/services/user_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class CreateBlog extends StatefulWidget {
@@ -71,10 +74,18 @@ class _CreateBlogState extends State<CreateBlog> {
     }
     _form.currentState.save();
     if(_editedBlog.id != null) {
-      Provider.of<BlogDatabase>(context, listen: false).updateBlog(_editedBlog.id, _editedBlog.title, _editedBlog.topic, _editedBlog.content, _editedBlog.imageUrl);
+      Provider.of<BlogDatabase>(context, listen: false).updateBlog(_editedBlog.id, _editedBlog.title, _editedBlog.topic, _editedBlog.content, _editedBlog.imageUrl, );
     }
     else{
-      Provider.of<BlogDatabase>(context, listen: false).addBlog(_editedBlog.title, _editedBlog.topic, _editedBlog.content, _editedBlog.imageUrl);
+      Provider.of<BlogDatabase>(context, listen: false).addBlog(
+          _editedBlog.title,
+          _editedBlog.topic,
+          _editedBlog.content,
+          _editedBlog.imageUrl,
+          Provider.of<UserProfileProvider>(context, listen: false).userData.userName,
+         DateFormat('yyyy-MMM-dd - kk:mm').format(DateTime.now()),
+      );
+      print(DateTime.now().toString());
     }
     await Provider.of<BlogDatabase>(context, listen: false).getBlogData();
     await Provider.of<BlogDatabase>(context, listen: false).getParticularUserData();

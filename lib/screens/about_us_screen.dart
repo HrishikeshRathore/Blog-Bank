@@ -24,9 +24,27 @@ class AboutUs extends StatelessWidget {
         elevation: 4,
         backgroundColor: Colors.white,
       ),
-      body: Center(child: Text(
-        'hello'
-      ),),
+      body: Center(child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Made with ', style: TextStyle(
+            color: Colors.green[900],
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+          ),),
+          Icon(Icons.favorite,
+            color: Colors.redAccent,
+            size: 25,
+          ),
+          Text(' by Hrishikesh',
+            style: TextStyle(
+              color: Colors.green[900],
+              fontWeight: FontWeight.bold,
+              fontSize: 15,
+            ),
+          ),
+        ],
+      )),
     );
   }
 }

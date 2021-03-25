@@ -4,22 +4,28 @@ import 'package:flutter/material.dart';
 
 class HomePageScreen extends StatelessWidget {
 
+  final String userId;
   final String image;
   final String title;
   final String topic;
   final String content;
+  final String publisher;
+  final String date;
 
-  HomePageScreen({this.topic, this.title, this.image, this.content});
+  HomePageScreen({this.userId, this.topic, this.publisher, this.title, this.image, this.content, this.date});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pushNamed(DescriptionPage.routeName, arguments: BlogModel(
+          userId: userId,
           title: title,
           topic: topic,
           imageUrl: image,
           content: content,
+          publisher: publisher,
+          date: date,
         ));
       },
       child: Container(
@@ -81,7 +87,7 @@ class HomePageScreen extends StatelessWidget {
                       height: 0,
                     ),
                     Text(
-                      'Publisher: Hrishikesh',
+                      'Publisher: $publisher',
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 10,

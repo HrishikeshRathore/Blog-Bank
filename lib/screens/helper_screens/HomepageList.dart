@@ -23,7 +23,9 @@ class HomepageList extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
           return snapshot.connectionState == ConnectionState.waiting
               ? Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    //valueColor: new AlwaysStoppedAnimation<Color>(Colors.green[300]),
+                  ),
                 )
               : Consumer<BlogDatabase>(
                   builder: (BuildContext context, value, Widget child) {
@@ -34,10 +36,13 @@ class HomepageList extends StatelessWidget {
                           child: CarouselSlider.builder(
                               itemCount: value.list.length,
                               itemBuilder: (ctx, i, realIdx) => SliderWidget(
+                                userId: value.list[i].userId,
                                 title: value.list[i].title,
                                 topic: value.list[i].topic,
                                 image: value.list[i].imageUrl,
                                 content: value.list[i].content,
+                                publisher: value.list[i].publisher,
+                                date: value.list[i].date,
                               ),
                               options: CarouselOptions(
                                 height: MediaQuery.of(context).size.height * .28,
@@ -57,10 +62,13 @@ class HomepageList extends StatelessWidget {
                             child: ListView.builder(
                               itemCount: value.list.length,
                               itemBuilder: (ctx, i) => HomePageScreen(
+                                userId: value.list[i].userId,
                                 title: value.list[i].title,
                                 topic: value.list[i].topic,
                                 image: value.list[i].imageUrl,
                                 content: value.list[i].content,
+                                publisher: value.list[i].publisher,
+                                date: value.list[i].date,
                               ),
                             ),
                           ),
