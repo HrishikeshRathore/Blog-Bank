@@ -5,6 +5,7 @@ import 'package:blog_bank/screens/helper_screens/profile.dart';
 import 'package:blog_bank/screens/helper_screens/your_blogs.dart';
 import 'package:blog_bank/services/auth_service.dart';
 import 'package:blog_bank/services/user_profile.dart';
+import 'package:blog_bank/widgets/network_sensitive.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBarIndex = 'Your Blogs';
     }
     if(_selectedIndex == 1){
-      appBarIndex = 'BlogBank';
+      appBarIndex = 'Pen It!';
     }
     if(_selectedIndex == 2){
       appBarIndex = 'Your Profile';
@@ -60,9 +61,9 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.white,
         title: Text(appBarIndex,
           style: TextStyle(
-            color: _selectedIndex == 1 ? Colors.green[400] : Colors.black ,
+            color: _selectedIndex == 1 ? Colors.green[300] : Colors.black ,
             fontWeight: _selectedIndex == 1 ? FontWeight.w900 : FontWeight.w600,
-            fontSize: _selectedIndex == 1 ? 28 : 20,
+            fontSize: _selectedIndex == 1 ? 27 : 20,
           ),
         ),
         actions: [
@@ -98,8 +99,46 @@ class _HomeScreenState extends State<HomeScreen> {
                 )),
         ],
       ),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: NetworkSensitive(
+        child1: Center(
+          child: _widgetOptions.elementAt(_selectedIndex),
+        ),
+        child2: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(
+                image: AssetImage('assets/images/nointernet.gif'),
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 5,),
+              Text(
+                'No internet connection.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.green[500],
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: 5, horizontal: 10,
+                ),
+                child: Text(
+                  'Please check your internet connection and try again.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.grey[800],
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[

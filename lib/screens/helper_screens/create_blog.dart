@@ -83,7 +83,7 @@ class _CreateBlogState extends State<CreateBlog> {
           _editedBlog.content,
           _editedBlog.imageUrl,
           Provider.of<UserProfileProvider>(context, listen: false).userData.userName,
-         DateFormat('yyyy-MMM-dd - kk:mm').format(DateTime.now()),
+         DateFormat('yyyy-MMM-dd hh:mm a').format(DateTime.now()),
       );
       print(DateTime.now().toString());
     }

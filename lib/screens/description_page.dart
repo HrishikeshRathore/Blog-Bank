@@ -94,7 +94,8 @@ class DescriptionPage extends StatelessWidget {
                   },
                   child: Container(
                     child: Text(
-                      'Published by ${args.publisher}',
+                      'By:- ${args.publisher}',
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: Colors.grey,
                         fontSize: 12,
@@ -112,6 +113,7 @@ class DescriptionPage extends StatelessWidget {
                 ),
                 child: Text(
                   args.date == null ? 'No date provided' : args.date,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 12,

@@ -1,7 +1,5 @@
-import 'package:blog_bank/services/blog_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 
 class AuthService with ChangeNotifier {
 
@@ -12,7 +10,6 @@ class AuthService with ChangeNotifier {
   static String userName;
 
   Future<void> registerWithEmailAndPassword(String name, String email, String password) async{
-    error = null;
     try {
       userName = name;
       var value = await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -54,8 +51,13 @@ class AuthService with ChangeNotifier {
       error = 'No user found for that email.';
     } else if (e.code == 'wrong-password') {
       error = 'Wrong password provided for that user.';
+    } else if (e.code == 'invalid-email') {
+      error = 'Invalid email';
+    } else if (e.code == 'invalid-password') {
+      error = 'Invalid password';
     } else {
       error = 'Something went Wrong';
     }
+    notifyListeners();
   }
 }

@@ -91,7 +91,10 @@ class _UserProfileState extends State<UserProfile> {
           child: Container(
             width: double.infinity,
             height: 50,
-            child: Center(child: Text('Update Profile')),
+            child: Center(child: Text('Update Profile' , style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),)),
             color: Colors.green[300],
           ),
         ),
